@@ -2,6 +2,8 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Para Ari 💖</title>
 
 <style>
@@ -16,7 +18,7 @@ body{
   font-family: Arial, sans-serif;
 }
 
-/* ✨ EFECTO BRILLO SUAVE */
+/* ✨ ESTRELLAS */
 body::before{
   content:"";
   position:absolute;
@@ -28,7 +30,6 @@ body::before{
   opacity:0.25;
 }
 
-/* 🌟 brillo extra */
 body::after{
   content:"";
   position:absolute;
@@ -53,7 +54,7 @@ body::after{
   z-index:10;
 }
 
-/* 💌 SOBRE */
+/* SOBRE */
 .sobre{
   position:relative;
   width:320px;
@@ -75,7 +76,7 @@ body::after{
   transform:scale(0.95) rotate(-2deg);
 }
 
-/* 💌 CARTA */
+/* CARTA */
 .carta{
   position:absolute;
   width:270px;
@@ -87,18 +88,18 @@ body::after{
   border-radius:10px;
   padding:10px;
   text-align:center;
-  transform:scale(0) translateY(20px);
+  transform:scale(0);
   opacity:0;
   transition:0.6s ease;
   box-shadow:0 0 20px rgba(0,0,0,0.5);
 }
 
 .abierto .carta{
-  transform:scale(1.1) translateY(0);
+  transform:scale(1.1);
   opacity:1;
 }
 
-/* 💖 EFECTOS */
+/* EFECTOS */
 .corazon, .estrella{
   position:absolute;
   font-size:20px;
@@ -110,7 +111,7 @@ body::after{
   100%{transform:translateY(-900px); opacity:0;}
 }
 
-/* 💥 EXPLOSIÓN FINAL */
+/* EXPLOSIÓN */
 .explosion{
   position:absolute;
   font-size:24px;
@@ -146,11 +147,11 @@ let clicks = 0;
 let audioIniciado = false;
 
 function iniciarMusica(){
-  let audio = document.getElementById("musica");
+  const audio = document.getElementById("musica");
 
   if(!audioIniciado){
     audio.volume = 0.7;
-    audio.play().catch(() => {});
+    audio.play().catch(()=>{});
     audioIniciado = true;
   }
 }
@@ -162,7 +163,6 @@ function abrirCarta(elemento){
   document.getElementById("contador").innerText =
     "Clics: " + clicks + " / 10";
 
-  // animación suave
   elemento.style.transform = "scale(1.05) rotate(2deg)";
   setTimeout(()=>{
     elemento.style.transform = "scale(1) rotate(0deg)";
