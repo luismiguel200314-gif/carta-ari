@@ -16,7 +16,7 @@ body{
   font-family: Arial, sans-serif;
 }
 
-/* 🌌 ESTRELLAS */
+/* ✨ EFECTO BRILLO SUAVE */
 body::before{
   content:"";
   position:absolute;
@@ -26,6 +26,16 @@ body::before{
   background-size:60px 60px;
   animation: estrellas 25s linear infinite;
   opacity:0.25;
+}
+
+/* 🌟 brillo extra */
+body::after{
+  content:"";
+  position:absolute;
+  width:100%;
+  height:100%;
+  background: radial-gradient(circle at center, rgba(255,0,150,0.12), transparent 70%);
+  pointer-events:none;
 }
 
 @keyframes estrellas{
@@ -43,7 +53,7 @@ body::before{
   z-index:10;
 }
 
-/* 💌 SOBRE 3D */
+/* 💌 SOBRE */
 .sobre{
   position:relative;
   width:320px;
@@ -59,7 +69,6 @@ body::before{
   box-shadow:0 0 30px rgba(255,0,150,0.6);
   transition:0.2s;
   z-index:2;
-  transform-style:preserve-3d;
 }
 
 .sobre:active{
@@ -101,7 +110,7 @@ body::before{
   100%{transform:translateY(-900px); opacity:0;}
 }
 
-/* 💥 EXPLOSIÓN */
+/* 💥 EXPLOSIÓN FINAL */
 .explosion{
   position:absolute;
   font-size:24px;
@@ -118,7 +127,7 @@ body::before{
 
 <body>
 
-<audio id="musica" loop>
+<audio id="musica" loop preload="auto">
   <source src="musica.mp3" type="audio/mpeg">
 </audio>
 
@@ -138,9 +147,10 @@ let audioIniciado = false;
 
 function iniciarMusica(){
   let audio = document.getElementById("musica");
+
   if(!audioIniciado){
     audio.volume = 0.7;
-    audio.play().catch(()=>{});
+    audio.play().catch(() => {});
     audioIniciado = true;
   }
 }
@@ -152,7 +162,7 @@ function abrirCarta(elemento){
   document.getElementById("contador").innerText =
     "Clics: " + clicks + " / 10";
 
-  // vibración suave
+  // animación suave
   elemento.style.transform = "scale(1.05) rotate(2deg)";
   setTimeout(()=>{
     elemento.style.transform = "scale(1) rotate(0deg)";
